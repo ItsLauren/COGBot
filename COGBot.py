@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import asyncio
 
-moderatorDelete = 0
+moderator_delete = 0
 
 messageChannel = discord.Object(id="447299800761892865")
 serverLogsChannel = discord.Object(id="343796978280300555")
@@ -298,9 +298,9 @@ Edited: ```{after.content}```""")
 
 @bot.event
 async def on_message_delete(message):
-    global moderatorDelete
+    global moderator_delete
 
-    if moderatorDelete == 0:
+    if moderator_delete == 0:
         print(f"Deletion triggered by {message.author}")
         if message.content is not None:
             if not message.author.id == "445867817707896834":
@@ -314,9 +314,9 @@ Note: Due to API limitations, it is not possible to see who deleted this message
 
 
 async def moderatorDelete(reaction, user):
-    global moderatorDelete
+    global moderator_delete
 
-    moderatorDelete = 1
+    moderator_delete = 1
     await bot.send_message(deletelogid, f"""==========
 A message has been deleted from {reaction.message.channel.mention} by {user.mention}.
 
@@ -324,7 +324,7 @@ Author: {reaction.message.author.mention}
 Content: ```{reaction.message.content}```""")
     await bot.delete_message(reaction.message)
     await asyncio.sleep(0.5)
-    moderatorDelete = 0
+    moderator_delete = 0
 
 @bot.event
 async def on_member_join(member):
