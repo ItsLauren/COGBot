@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import asyncio
+import COGBotToken
 
 moderator_delete = 0
 
@@ -368,4 +369,4 @@ async def on_ready():
 
 
 if __name__ == "__main__":
-    bot.run("")
+    bot.run(COGBotToken.token)
