@@ -310,8 +310,7 @@ async def on_message_delete(message):
 A message has been deleted from {message.channel.mention}.
         
 Author: {message.author.mention}
-Content: ```{message.content}```
-Note: Due to API limitations, it is not possible to see who deleted this message.""")
+Content: ```{message.content}```""")
 
 
 async def moderatorDelete(reaction, user):
